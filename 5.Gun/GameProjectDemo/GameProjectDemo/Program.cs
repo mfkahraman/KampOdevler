@@ -17,7 +17,7 @@ Campaign yaz = new Campaign() { Id = 31, Name = "Yaz Kampanyası", Description =
 Campaign kis = new Campaign() { Id = 32, Name = "Kış Kampanyası", Description = "Soğuk günlerde oyun oynamak iyi gider", DiscountRate = 15 };
 Campaign bahar = new Campaign() { Id = 33, Name = "Bahar Kampanyası", Description = "Oyun sezonu başlasın!", DiscountRate = 18 };
 
-BasePlayerManager playerManager = new PlayerManager();
+BasePlayerManager playerManager = new PlayerManager(new PlayerCheckManager());
 ICampaignService campaignManager = new CampaingManager();
 ISaleService saleManager = new SaleManager();
 
@@ -47,7 +47,7 @@ campaignManager.Add(yaz);
 Console.WriteLine("\n");
 campaignManager.Add(kis);
 Console.WriteLine("\n");
-campaignManager.Add(yaz);
+campaignManager.Add(bahar);
 Console.WriteLine("\n");
 Console.WriteLine("Kampanya güncelleme işlemi;");
 campaignManager.Update(kis);

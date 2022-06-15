@@ -11,10 +11,15 @@ namespace GameProjectDemo.Concrete
 {
     public class PlayerManager : BasePlayerManager
     {
-        IPlayerCheckService playerCheckManager = new PlayerCheckManager();
+        IPlayerCheckService _playerCheckService;
+        public PlayerManager(IPlayerCheckService playerCheckService)
+        {
+            _playerCheckService = playerCheckService;
+        }
+
         public override void Register(Player player)
         {
-            if (playerCheckManager.CheckIfRealPerson(player)==true)
+            if (_playerCheckService.CheckIfRealPerson(player)==true)
             {
                base.Register(player);
             }
